@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--grid layout text styles-->
+    <style name="left_column_bold" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="right_column_normal" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:layout_width">0dp</item>
+    </style>
+
 </resources>
