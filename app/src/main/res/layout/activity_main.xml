@@ -26,6 +26,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
+        android:foregroundGravity="top"
         android:hint="Digite título de um filme..."
         android:inputType="textPersonName"
         android:textColorLink="#065166"

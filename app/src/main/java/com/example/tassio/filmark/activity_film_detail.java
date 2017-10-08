@@ -75,6 +75,7 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         try {
             URL url = new URL(stringUrl);
             new DownloadImageTask((ImageView) filmImageView).execute(stringUrl);
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

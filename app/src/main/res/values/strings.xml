@@ -23,6 +23,6 @@
     <string name="example_stars">John C. Reilly, Sarah Silverman, Jack McBrayer, Jane Lynch</string>
     <string name="rating">Nota</string>
     <string name="example_rating">6.9</string>
-    <string name="plot">Plot</string>
+    <string name="plot">Sinopse</string>
     <string name="example_full_plot">"Wreck-It Ralph longs to be as beloved as his game's perfect Good Guy, Fix-It Felix. Problem is, nobody loves a Bad Guy. But they do love heroes... so when a modern, first-person shooter game arrives featuring tough-as-nails Sergeant Calhoun, Ralph sees it as his ticket to heroism and happiness. He sneaks into the game with a simple plan -- win a medal -- but soon wrecks everything, and accidentally unleashes a deadly enemy that threatens every game in the arcade. Ralph's only hope?"</string>
 </resources>
