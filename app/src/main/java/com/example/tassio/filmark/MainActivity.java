@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     Log.d(TAG, e.toString());
+                    Toast.makeText(getApplicationContext(),
+                            "Erro na busca pela palavra-chave, tente novamente.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(error);
                 VolleyLog.e("Error: ", error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        "Erro na pesquisa...", Toast.LENGTH_SHORT).show();
+                        "Erro na pesquisa, seu celular está conectado?", Toast.LENGTH_SHORT).show();
             }
         });
 
