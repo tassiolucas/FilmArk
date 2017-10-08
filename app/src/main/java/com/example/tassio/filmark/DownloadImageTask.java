@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by tassi on 07/10/2017.
  */
-
+// Classe de automação do download das imagens dos filmes
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
 

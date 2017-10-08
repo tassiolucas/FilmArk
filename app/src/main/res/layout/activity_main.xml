@@ -27,10 +27,10 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:foregroundGravity="top"
-        android:hint="Digite título de um filme..."
+        android:hint="Digite o título de um filme..."
         android:inputType="textPersonName"
         android:textColorLink="#065166"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btSearch" />
@@ -52,16 +52,20 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="229dp"
-        android:layout_height="319dp"
+        android:layout_width="231dp"
+        android:layout_height="133dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="190dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_do_filme_rio_render_edit" />
+        app:srcCompat="@drawable/blue_do_filme_rio_render_edit"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fieldSearch"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteY="331dp" />
 
     <ImageView
         android:id="@+id/imageView4"

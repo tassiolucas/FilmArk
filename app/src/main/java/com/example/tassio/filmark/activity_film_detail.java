@@ -24,8 +24,10 @@ import java.util.List;
 
 public class activity_film_detail extends AppCompatActivity implements Serializable {
 
+    // Declaração da variável de LOG de depuração
     private static final String TAG = MainActivity.class.getName();
 
+    // Declaração das variáveis de informação do filme
     private TextView filmeTextInfo;
     private TextView notaTextInfo;
     private TextView anoTextInfo;
@@ -34,16 +36,14 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
     private TextView plotTextInfo;
     private ImageView filmImageView;
 
-    private List<String> request = new ArrayList<String>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        getSupportActionBar().hide(); // Método para esconder a barra de título em cima da foto do filme
         setContentView(R.layout.activity_film_detail);
 
+        // Veiculação dos itens da janela à lógica do programa
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.main_backdrop);
-
         filmeTextInfo = (TextView) findViewById(R.id.filmeTextInfo);
         notaTextInfo = (TextView) findViewById(R.id.notaTextInfo);
         anoTextInfo = (TextView) findViewById(R.id.anoTextInfo);
@@ -52,13 +52,11 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         plotTextInfo = (TextView) findViewById(R.id.plotTextInfo);
         filmImageView = (ImageView) findViewById(R.id.imageView);
 
-
         String stringUrl = new String();
 
-        try {
+        try { // Tentativa de busca das informações passadas entre telas do JSONObject baixado
             JSONObject json = new JSONObject(getIntent().getStringExtra("json"));
-            System.out.println("DEU CERTO: " + json);
-
+            // Veiculação das informações passadas entre telas para os campos da activity_film_detail
             filmeTextInfo.setText(json.getString("name"));
             notaTextInfo.setText(json.getString("rating"));
             anoTextInfo.setText(json.getString("year"));
@@ -73,13 +71,13 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         }
 
         try {
+            // Veiculação e download da imagem URL do cataz do filme com a ImageView dos detalhes do filme pesquisado
             URL url = new URL(stringUrl);
             new DownloadImageTask((ImageView) filmImageView).execute(stringUrl);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
 
     }
 
