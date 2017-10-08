@@ -3,6 +3,7 @@ package com.example.tassio.filmark;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.graphics.BitmapCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,20 +26,13 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
 
     private static final String TAG = MainActivity.class.getName();
 
-    private TextView filmeTextView;
     private TextView filmeTextInfo;
-    private TextView notaTextView;
     private TextView notaTextInfo;
-    private TextView anoTextView;
     private TextView anoTextInfo;
-    private TextView generoTextView;
     private TextView generoTextInfo;
-    private TextView estrelasTextView;
     private TextView estrelasTextInfo;
-    private TextView plotTextView;
     private TextView plotTextInfo;
     private ImageView filmImageView;
-
 
     private List<String> request = new ArrayList<String>();
 
@@ -48,6 +42,8 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         getSupportActionBar().hide();
         setContentView(R.layout.activity_film_detail);
 
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.main_backdrop);
+
         filmeTextInfo = (TextView) findViewById(R.id.filmeTextInfo);
         notaTextInfo = (TextView) findViewById(R.id.notaTextInfo);
         anoTextInfo = (TextView) findViewById(R.id.anoTextInfo);
@@ -56,16 +52,12 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         plotTextInfo = (TextView) findViewById(R.id.plotTextInfo);
         filmImageView = (ImageView) findViewById(R.id.imageView);
 
+
         String stringUrl = new String();
-
-        Intent intent = getIntent();
-
 
         try {
             JSONObject json = new JSONObject(getIntent().getStringExtra("json"));
             System.out.println("DEU CERTO: " + json);
-
-
 
             filmeTextInfo.setText(json.getString("name"));
             notaTextInfo.setText(json.getString("rating"));
@@ -74,6 +66,8 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
             estrelasTextInfo.setText(json.getString("stars"));
             plotTextInfo.setText(json.getString("plot"));
             stringUrl = json.getString("poster_url");
+            collapsingToolbarLayout.setTitle(json.getString("name"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -84,12 +78,6 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
-
-
-
-        // System.out.println("DEU CERTO!!! " + json);
-
 
 
     }

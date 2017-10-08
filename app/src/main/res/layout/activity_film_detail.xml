@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/main.appbar"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="300dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main_backdrop"
@@ -16,7 +16,15 @@
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/main_toolbar">
+            app:expandedTitleTextAppearance="@style/CollapsedAppBar">
+
+            <TextureView
+                android:id="@+id/textureView"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:layout_gravity="bottom"
+                android:alpha="0.5"
+                android:focusable="false" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -25,7 +33,8 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:transitionName="poster"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:layout_collapseMode="parallax"
+                app:srcCompat="@drawable/movie_camera" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/main_toolbar"
@@ -43,8 +52,8 @@
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:columnCount="2"
             android:useDefaultMargins="true">
 
@@ -150,8 +159,8 @@
             <TextView
                 android:id="@+id/estrelasTextInfo"
                 style="@style/right_column_normal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="255dp"
+                android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_row="5"
                 android:text="@string/example_stars" />
@@ -168,10 +177,12 @@
             <TextView
                 android:id="@+id/plotTextInfo"
                 style="@style/right_column_normal"
-                android:layout_width="wrap_content"
+                android:layout_width="255dp"
+                android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_row="6"
-                android:text="@string/example_full_plot" />
+                android:text="@string/example_full_plot"
+                android:textAlignment="textStart" />
 
         </GridLayout>
     </android.support.v4.widget.NestedScrollView>

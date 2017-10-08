@@ -35,18 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
     private Button btSearch;
     private EditText fieldSearch;
-    private RequestQueue mRequestQueue;
-    private StringRequest stringRequest;
     private String url = "http://theapache64.xyz:8080/movie_db/search?keyword=";
 
-
-
-    ArrayList<String> arrayRequest = new ArrayList<String>();
-
-    Film filmSearch = new Film();
-
     private JSONObject object = new JSONObject();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         btSearch = (Button) findViewById(R.id.btSearch);
         fieldSearch = (EditText) findViewById(R.id.fieldSearch);
-
-        mRequestQueue = Volley.newRequestQueue(this);
-
-
 
         btSearch.setOnClickListener(new View.OnClickListener() {
 
@@ -85,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendRequestAndPrintResponse() {
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url + fieldSearch.getText().toString(), null, new Response.Listener<JSONObject>() {
+        String input = fieldSearch.getText().toString();
+        input = input.replace(" ", "");
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url + input, null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {

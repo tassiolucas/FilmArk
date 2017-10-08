@@ -3,9 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#0bc4f2</item>
+        <item name="colorPrimaryDark">#0ba3c9</item>
+        <item name="colorAccent">#0e343e</item>
+    </style>
+
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
