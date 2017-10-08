@@ -37,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
     private Button btSearch;
     private EditText fieldSearch;
     private String url = "http://theapache64.xyz:8080/movie_db/search?keyword=";
+    /*
+    * OBS: Sobre a API: foi utilizado um outro site para a busca das informações dos filmes, devido
+    * ao fato da API solicitada: OMDB API - ser um recurso que necessita de pagamento para utilização
+    * e validação das chaves. O site utilizado acima corresponde ao mesmo sistema de consulta HTTP RESTful
+    * somente alterando o tamanho do banco de dados, que por ser um servidor gratuito, deve ter menos informações
+    * de filmes.
+     */
+
+
     private JSONObject object = new JSONObject();
 
     @Override // Método a ser executado no início da aplicação
