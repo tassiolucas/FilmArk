@@ -1,0 +1,63 @@
+[33mcommit 292ab802f6df0351867c84da4e9a02fd3cafa43b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 23:44:49 2017 -0300
+
+    -Retrições de orientação em modo portrait
+
+[33mcommit fbe6b0ba20217bf89af45ca030093233022e4b34[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 19:03:02 2017 -0300
+
+    -Comentários de observação na utilização da API adicionados.
+
+[33mcommit 0ed6ffb100643962a4c7a7d71aa33b56e968dbb8[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 18:42:34 2017 -0300
+
+    -Comentários de lembretes do código adicionados
+    -Alinhamento de algumas constrainst
+
+[33mcommit 1fcd7eb1eca5e86d06bb50955ec6a316d779f917[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 14:00:42 2017 -0300
+
+    -Estilização da fonte da barra de título do filme
+
+[33mcommit be6954dddca2e3a308b39dd3e70bf345334d182a[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 11:30:11 2017 -0300
+
+    -Inclusão de gradiente na foto do filme
+
+[33mcommit 0121db53f0f01277ad3c876f0769f61e1139df42[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 10:17:16 2017 -0300
+
+    -Alterações de icones e imagens de acordo com tema blue
+
+[33mcommit 047de9511355bd0b10f8ddea48938227a33d6264[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sun Oct 8 00:03:23 2017 -0300
+
+    -Inserção de icones e imagens
+    -Ajuste do tema
+
+[33mcommit f731bd9b4f7b9ffc16269b7fd8a5094aefbaf95b[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sat Oct 7 21:13:07 2017 -0300
+
+    -Linkagem das informações do Request com a segunda tela
+    -Ajuste de layout da segunda tela
+
+[33mcommit 2b32dbac027ab9cf1f342b61eb38d8c75cc3e03b[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sat Oct 7 13:41:23 2017 -0300
+
+    -Criação da segunda tela
+    -Início da veiculação do HTTP Request com os componentes da segunda tela
+
+[33mcommit 12b5308aea8edd546b3252c590abd638a133a1a5[m
+Author: tassiolucas <tassiolucas@live.com>
+Date:   Sat Oct 7 10:02:30 2017 -0300
+
+    -Commit Inicial
