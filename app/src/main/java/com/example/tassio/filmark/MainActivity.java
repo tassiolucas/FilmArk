@@ -1,8 +1,10 @@
 package com.example.tassio.filmark;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private JSONObject object = new JSONObject();
 
     private HTTPConnection httpConnection = new HTTPConnection();
+
+    private static MainActivity mainInstance;
+    private RequestQueue mainRequestQueue;
+
+    public String tokenToken;
+
     /*
     OBS: Sobre a API: foi utilizado um outro site para a busca das informações dos filmes
     (temporáriamente), devido ao fato da API solicitada: OMDB API - ser um recurso que necessita de
@@ -46,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // Veiculação do botão de procura e do campo da barra de procura
         btSearch = (Button) findViewById(R.id.btSearch);
         fieldSearch = (EditText) findViewById(R.id.fieldSearch);
@@ -53,14 +62,20 @@ public class MainActivity extends AppCompatActivity {
         btSearch.setOnClickListener(new View.OnClickListener() {
             // Método a ser executado ao apertar o botão de procura
             public void onClick(View v){
-                sendRequestAndPrintResponse();
-
-                // httpConnection.sendRequest(fieldSearch.getText().toString());
+                 //sendRequestAndPrintResponse();
+                //httpConnection.request(url + fieldSearch.getText().toString(), getApplicationContext());
+                httpConnection.sendSearchMovie(getApplicationContext(), fieldSearch.getText().toString(), new SearchCallBack() {
+                    @Override
+                    public void onAnswer(JSONObject result) {
+                        System.out.println(result);
+                    }
+                });
 
             }
         });
     }
 
+    /*
     // Método de união das Strings da API do Buscador de Filmes + o título de procura inserido no campo
     private void sendRequestAndPrintResponse() {
         // Remoção dos campos com espaços inseridos pelo usuário
@@ -105,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(req);
     }
 
+*/
+
     // Método de passagem de informaões do filme para próxima tela + Passagem para proxima tela
     private void moveAct() {
         Intent it = new Intent(MainActivity.this, activity_film_detail.class);
@@ -114,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-
+    public interface SearchCallBack {
+        void onAnswer(JSONObject result);
+    }
 
 
 

@@ -1,11 +1,7 @@
 package com.example.tassio.filmark;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
+import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -13,21 +9,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import android.widget.*;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import static android.app.PendingIntent.getActivity;
-
 
 /**
  * Created by tassi on 10/10/2017.
  */
 
-public class HTTPConnection extends AppCompatActivity {
+public class HTTPConnection extends Application {
 
     //Declaração das variáveis
     private JSONObject objectJson = new JSONObject();
@@ -35,89 +23,64 @@ public class HTTPConnection extends AppCompatActivity {
     private JSONObject objectResposta = new JSONObject();
 
     private static final String TAG = HTTPConnection.class.getName();
-    public Context context;
 
     private String keyApi = "5c03f6eb91d5afc669745ebc92817eab";
     private String enderecoApi = "https://api.themoviedb.org/3/";
     private String tokenApi;
 
-    private String entradaRequest;
 
+    public void sendSearchMovie(final Context context, String entradaSearch, final MainActivity.SearchCallBack callBack) {
 
-    public String sendRequestToken() {
+        String endPointSearch = enderecoApi + "search/movie?api_key=" + keyApi + "&language=pt-BR&query=" + entradaSearch + "&page=1&include_adult=true";
+
+        request(endPointSearch, context, new ServerCallBack() {
+            public void onSuccess(JSONObject result) {
+                callBack.onAnswer(result);
+            }
+        });
+
+    }
+
+    /*
+    // Não dependente para procura de filmes
+    public void sendRequestToken(final Context context) throws JSONException {
         String endAutentication = "authentication/token/new?api_key=" + keyApi;
 
-        objectResposta = request(endAutentication);
-
-        try {
-            tokenApi = objectResposta.getJSONObject("request_token").getString();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.d(TAG, "Error sendRequestToken: " + e);
-        }
-
-        return tokenApi;
-    }
-
-    public String sendRequestSession(String token) {
-
-        String endSession = "authentication/session/new?api_key=" + keyApi + "&request_token=" + tokenApi ;
-
-        objectJson = request(endSession);
-
-        try {
-            String siteAutenticação = "https://www.themoviedb.org/authenticate/";
-
-            Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(siteAutenticação));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            try {
-                context.startActivity(intent);
-            } catch (ActivityNotFoundException ex) {
-                // Chrome browser presumably not installed so allow user to choose instead
-                intent.setPackage(null);
-                context.startActivity(intent);
+        request(endAutentication, context, new ServerCallBack() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                try {
+                    tokenApi = result.getString("request_token").toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-
-
-        }catch (JSONObject e) {
-            Log.d(TAG, e);
-        }
-
-        // Verificar tentativa de abertura de link.
-
-
-
-
-
+        });
     }
+    */
 
-    private JSONObject request(String entrada) {
+    public void request(String endPoint, Context context, final ServerCallBack callBack) {
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, enderecoApi+ entrada, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, endPoint, null, new Response.Listener<JSONObject>() {
 
             public void onResponse(JSONObject response) {
-
                 Log.d(TAG, response.toString());
-                objectJson = response;
-
+                callBack.onSuccess(response);
             }
         }, new Response.ErrorListener() {
-
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, error.toString());
-
-                VolleyLog.e("Error: ", error.getMessage());
-
+                VolleyLog.e("Error: " + error.getMessage());
             }
-
         });
 
-        Volley.newRequestQueue(this).add(request);
-
-        return objectJson;
+        MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
 
+    public interface ServerCallBack {
+        void onSuccess(JSONObject result);
+    }
 
 }
