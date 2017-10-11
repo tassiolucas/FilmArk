@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText fieldSearch;
     private String url = "http://theapache64.xyz:8080/movie_db/search?keyword=";
     private JSONObject object = new JSONObject();
+
+    private HTTPConnection httpConnection = new HTTPConnection();
     /*
     OBS: Sobre a API: foi utilizado um outro site para a busca das informações dos filmes
     (temporáriamente), devido ao fato da API solicitada: OMDB API - ser um recurso que necessita de
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
             // Método a ser executado ao apertar o botão de procura
             public void onClick(View v){
                 sendRequestAndPrintResponse();
+
+                // httpConnection.sendRequest(fieldSearch.getText().toString());
+
             }
         });
     }
