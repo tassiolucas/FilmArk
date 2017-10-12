@@ -9,4 +9,5 @@
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="text_protection_scrim_height">88dp</dimen>
     <integer name="grid_column_count">2</integer>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
