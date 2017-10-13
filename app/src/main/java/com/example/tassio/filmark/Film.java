@@ -1,45 +1,36 @@
 package com.example.tassio.filmark;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tassi on 11/10/2017.
  */
 
 public class Film {
 
-    private String titulo;
-    private String ano;
-    private String rating;
-    private String linkCartaz;
+    String titulo;
+    String ano;
+    String rating;
+    String linkCartaz;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
+    Film(String titulo, String ano, String rating, String linkCartaz) {
         this.titulo = titulo;
-    }
-
-    public String getAno() {
-        return ano;
-    }
-
-    public void setAno(String ano) {
         this.ano = ano;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
         this.rating = rating;
-    }
-
-    public String getLinkCartaz() {
-        return linkCartaz;
-    }
-
-    public void setLinkCartaz(String linkCartaz) {
         this.linkCartaz = linkCartaz;
     }
+
+    private List<Film> films;
+
+    private void initializaData() {
+        films = new ArrayList<>();
+        films.add(new Film("Titanic", "1991", "9.5", "https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465"));
+    }
+
+
+
+
+
+
 }

@@ -18,7 +18,7 @@ public class FilmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.film_fragment, null);
 
-        TextView tv = (TextView) view.findViewById(R.id.textViewFragment);
+        TextView tv = (TextView) view.findViewById(R.id.titleFilmCard);
 
         tv.setText("BLABLABLA");
 
@@ -26,7 +26,7 @@ public class FilmFragment extends Fragment {
     }
 
     public void alterarTextoButton(String texto) {
-        TextView tv = (TextView) getView().findViewById(R.id.textViewFragment);
+        TextView tv = (TextView) getView().findViewById(R.id.titleFilmCard);
 
         tv.setText("BLABLABLA");
     }
