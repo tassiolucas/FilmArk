@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -52,11 +54,15 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
 
     @Override
     public void onBindViewHolder(FilmViewHolder holder, int position){
-        Film film = filmList.get(position);
-        holder.titleFilmCard.setText(film.getTitle());
-        holder.yearFilmCard.setText(film.getYear());
-        holder.ratingFilmCard.setText(film.getRating());
-
+        try {
+            Film film = filmList.get(position);
+            holder.titleFilmCard.setText(film.getTitle());
+            holder.yearFilmCard.setText("Ano: " + film.getYear().substring(0, 4));
+            holder.ratingFilmCard.setText("Avaliação: " + film.getRating());
+            Picasso.with(context).load(film.getLinkCartaz()).into(holder.imageFilmCard);
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
     }
 
     @Override

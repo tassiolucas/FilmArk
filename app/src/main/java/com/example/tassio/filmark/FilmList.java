@@ -12,8 +12,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -26,6 +26,7 @@ public class FilmList extends Activity {
 
     List<Film> filmList;
     FilmAdapter adapter;
+    JSONArray arrayFilms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,18 @@ public class FilmList extends Activity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerFilm_content);
 
 
-        List<Film> filmList = (ArrayList<Film>) getIntent().getSerializableExtra("filmArray");
+        Intent it = getIntent();
+        String jsonString = it.getStringExtra("jsonArray");
 
-        System.out.println("TESTE: " + filmList.toString());
+        try {
+            arrayFilms = new JSONArray(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        //filmList = new ArrayList<>();
+        System.out.println("TESTE: " + arrayFilms.toString());
+
+        filmList = new ArrayList<>();
 
         adapter = new FilmAdapter(this, filmList);
 
@@ -48,17 +56,35 @@ public class FilmList extends Activity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        prepareFilms();
+        prepareFilms(arrayFilms);
 
     }
 
-    private void prepareFilms() {
+    private void prepareFilms(JSONArray arrayFilms) {
+
+        for (int i = 0; i <= arrayFilms.length(); i++){
+
+            Film film = new Film();
+
+            try {
+                film.setTitle(arrayFilms.getJSONObject(i).getString("title"));
+                film.setYear(arrayFilms.getJSONObject(i).getString("release_date"));
+                film.setRating(arrayFilms.getJSONObject(i).getString("vote_average"));
+                film.setLinkCartaz("http://image.tmdb.org/t/p/w185" + arrayFilms.getJSONObject(i).getString("poster_path"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            filmList.add(film);
+
+        }
 
 //        Film a = new Film("Titanic", "1991", "9.5", "BLABLA");
 //        filmList.add(a);
 //
 //        Film b = new Film("Games of Thones", "2017", "10", "BLABLA");
 //        filmList.add(b);
+
     }
 
 

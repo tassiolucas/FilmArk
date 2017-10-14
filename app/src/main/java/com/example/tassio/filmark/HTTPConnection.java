@@ -31,7 +31,10 @@ public class HTTPConnection extends Application {
 
     public void sendSearchMovie(final Context context, String entradaSearch, final MainActivity.SearchCallBack callBack) {
 
-        String endPointSearch = enderecoApi + "search/movie?api_key=" + keyApi + "&language=pt-BR&query=" + entradaSearch + "&page=1&include_adult=true";
+        String input = entradaSearch;
+        input = input.replace(" ", "%20");
+
+        String endPointSearch = enderecoApi + "search/movie?api_key=" + keyApi + "&language=pt-BR&query=" + input + "&page=1&include_adult=true";
 
         request(endPointSearch, context, new ServerCallBack() {
             public void onSuccess(JSONObject result) {
