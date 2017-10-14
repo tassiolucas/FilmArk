@@ -1,11 +1,15 @@
 package com.example.tassio.filmark;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -15,51 +19,49 @@ import java.util.List;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
-    public static class FilmViewHolder extends RecyclerView.ViewHolder {
+    Context context;
+    List<Film> filmList;
 
-        CardView cv;
-        TextView tv;
+    public class FilmViewHolder extends RecyclerView.ViewHolder {
 
-        FilmViewHolder(View itemView) {
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            tv = (TextView) itemView.findViewById(R.id.titleFilmCard);
+        TextView titleFilmCard;
+        TextView yearFilmCard;
+        TextView ratingFilmCard;
+        ImageView imageFilmCard;
 
+        public FilmViewHolder(View view) {
+            super(view);
+            titleFilmCard = (TextView) view.findViewById(R.id.titleFilmCard);
+            yearFilmCard = (TextView) view.findViewById(R.id.yearFilmCard);
+            ratingFilmCard = (TextView) view.findViewById(R.id.ratingFilmCard);
+            imageFilmCard = (ImageView) view.findViewById(R.id.imageFilmCard);
         }
-
     }
 
-    List<Film> films;
+    public FilmAdapter(Context context, List<Film> filmList) {
+        this.context = context;
+        this.filmList = filmList;
+    }
 
-    FilmAdapter(List<Film> films) {
-        this.films = films;
+    @Override
+    public FilmViewHolder onCreateViewHolder(ViewGroup parent, int i){
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_fragment, parent, false);
+
+        return new FilmViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(FilmViewHolder holder, int position){
+        Film film = filmList.get(position);
+        holder.titleFilmCard.setText(film.getTitle());
+        holder.yearFilmCard.setText(film.getYear());
+        holder.ratingFilmCard.setText(film.getRating());
+
     }
 
     @Override
     public int getItemCount(){
-        return films.size();
+        return filmList.size();
     }
-
-    @Override
-    public FilmViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.film_fragment, viewGroup, false);
-
-        FilmViewHolder filmViewHolder = new FilmViewHolder(v);
-
-        return filmViewHolder;
-
-    }
-
-    @Override
-    public void onBindViewHolder(FilmViewHolder filmViewHolder, int i){
-        filmViewHolder.tv.setText(films.get(i).titulo);
-
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView){
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
 
 }

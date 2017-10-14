@@ -1,5 +1,6 @@
 package com.example.tassio.filmark;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,30 +8,53 @@ import java.util.List;
  * Created by tassi on 11/10/2017.
  */
 
-public class Film {
+public class Film implements Serializable {
 
-    String titulo;
-    String ano;
+    String title;
+    String year;
     String rating;
     String linkCartaz;
 
+    public Film(){
+    }
+
     Film(String titulo, String ano, String rating, String linkCartaz) {
-        this.titulo = titulo;
-        this.ano = ano;
+        this.title = titulo;
+        this.year = ano;
         this.rating = rating;
         this.linkCartaz = linkCartaz;
     }
 
-    private List<Film> films;
-
-    private void initializaData() {
-        films = new ArrayList<>();
-        films.add(new Film("Titanic", "1991", "9.5", "https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465"));
+    public String getTitle() {
+        return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public String getYear(){
+        return year;
+    }
 
+    public void setYear(String year){
+        this.year = year;
+    }
 
+    public String getRating(){
+        return rating;
+    }
 
+    public void setRating(String rating){
+        this.rating = rating;
+    }
+
+    public String getLinkCartaz(){
+        return linkCartaz;
+    }
+
+    public void setLinkCartaz(String linkCartaz){
+        this.linkCartaz = linkCartaz;
+    }
 
 }

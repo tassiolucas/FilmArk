@@ -2,6 +2,7 @@ package com.example.tassio.filmark;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,12 +18,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.*;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private HTTPConnection httpConnection = new HTTPConnection();
 
-    private static MainActivity mainInstance;
-    private RequestQueue mainRequestQueue;
-
-    public String tokenToken;
-
-    public ArrayList<Film> arrayFilm = new ArrayList<Film>();
+    List<Film> filmArray = new ArrayList<>();
 
     /*
     OBS: Sobre a API: foi utilizado um outro site para a busca das informações dos filmes
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // Veiculação do botão de procura e do campo da barra de procura
         btSearch = (Button) findViewById(R.id.btSearch);
         fieldSearch = (EditText) findViewById(R.id.fieldSearch);
@@ -72,45 +73,45 @@ public class MainActivity extends AppCompatActivity {
                  //sendRequestAndPrintResponse();
                 //httpConnection.request(url + fieldSearch.getText().toString(), getApplicationContext());
 
-//                httpConnection.sendSearchMovie(getApplicationContext(), fieldSearch.getText().toString(), new SearchCallBack() {
-//                    @Override
-//                    public void onAnswer(JSONObject result) {
-//                        System.out.println(result);
-//
-//                        try {
-//
-//                            JSONObject arrayJson = new JSONObject();
-//
-//                            arrayJson = result.getJSONObject("results");
-//
-//                            System.out.println("Array Json: " + arrayJson);
-//
-//
-//                            for (int i = 0; i <= arrayJson.length(); i++) {
-//
-//                                Film film = new Film();
-//
-//                                film.setTitulo(arrayJson.getString("title"));
-//                                film.setAno(arrayJson.getString("release_date"));
-//                                film.setRating(arrayJson.getString("vote_count"));
-//
-//                                arrayFilm.add(film);
-//
-//                            }
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        System.out.println("Array Film: " + arrayFilm.toString());
-//
-//
-//
-//
-//                    }
-//                });
+                httpConnection.sendSearchMovie(getApplicationContext(), fieldSearch.getText().toString(), new SearchCallBack() {
+                    @Override
+                    public void onAnswer(JSONObject result) {
+                        try {
+                            System.out.println("Array page: " + result.getString("page"));
+                            System.out.println("Array total_results: " + result.getString("total_results"));
+                            System.out.println("Array total_pages: " + result.getString("total_pages"));
+
+                            JSONArray cast = result.getJSONArray("results");
+
+
+                            for (int i = 0; i <= result.getJSONArray("results").length(); i++){
+
+                                Film film = new Film();
+
+                                System.out.println("Array Title: " + cast.get(i).toString());
+
+                                JSONObject castFilm = cast.getJSONObject(i);
+
+                                film.setTitle(castFilm.getString("titulo"));
+                                film.setYear(castFilm.getString("release_date"));
+                                film.setRating(castFilm.getString("vote_average"));
+                                film.setLinkCartaz("poster_path");
+
+                                filmArray.add(film);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
 
                 Intent it = new Intent(MainActivity.this, FilmList.class);
+
+                it.putExtra("filmArray", (Serializable) filmArray);
                 startActivity(it);
 
             }
