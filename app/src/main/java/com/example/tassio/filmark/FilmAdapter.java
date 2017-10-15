@@ -34,6 +34,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
         ImageView imageFilmCard;
         ImageView ratingStar;
         View mCardView;
+        TextView overviewFilmCard;
 
         public FilmViewHolder(View view) {
             super(view);
@@ -45,6 +46,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             ratingFilmCard = (TextView) view.findViewById(R.id.ratingFilmCard);
             imageFilmCard = (ImageView) view.findViewById(R.id.imageFilmCard);
             ratingStar = (ImageView) view.findViewById(R.id.ratingStar);
+            overviewFilmCard = (TextView) view.findViewById(R.id.overviewFilmCard);
 
             mCardView.setOnClickListener(this);
         }
@@ -85,7 +87,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             Picasso.with(context).load(film.getLinkCartaz()).into(holder.imageFilmCard);
             holder.ratingStar.setImageResource(R.drawable.star);
             holder.itemView.setTag(position);
-
+            holder.overviewFilmCard.setText(film.getOverview());
         } catch (Exception e) {
             System.out.println("EXCEPTION: " + e);
         }
