@@ -59,7 +59,7 @@ public class FilmList extends Activity {
 
     private void prepareFilms(JSONArray arrayFilms) {
 
-        for (int i = 0; i <= arrayFilms.length(); i++){
+        for (int i = 0; i < arrayFilms.length(); i++){
 
             Film film = new Film();
 
