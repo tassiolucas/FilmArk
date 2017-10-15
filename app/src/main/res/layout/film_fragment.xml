@@ -35,36 +35,47 @@
 
             <TextView
                 android:id="@+id/titleFilmCard"
-                android:layout_width="230dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="25dp"
-                android:text="TextView"
                 style="@style/left_column_bold"
+                android:layout_width="229dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="16dp"
+                android:text="Titanic"
+                card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintLeft_toRightOf="@+id/imageFilmCard"
-                card_view:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginLeft="14dp" />
 
             <TextView
                 android:id="@+id/yearFilmCard"
-                android:layout_width="230dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
-                android:text="TextView"
                 style="@style/left_column_bold"
+                android:layout_width="80dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="4dp"
+                android:text="Ano: 2017"
                 card_view:layout_constraintLeft_toRightOf="@+id/imageFilmCard"
                 card_view:layout_constraintTop_toBottomOf="@+id/titleFilmCard" />
 
             <TextView
                 android:id="@+id/ratingFilmCard"
-                android:layout_width="230dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
-                android:text="TextView"
                 style="@style/left_column_bold"
-                card_view:layout_constraintLeft_toRightOf="@+id/imageFilmCard"
-                card_view:layout_constraintTop_toBottomOf="@+id/yearFilmCard" />
+                android:layout_width="26dp"
+                android:layout_height="23dp"
+                android:text="9.5"
+                android:layout_marginRight="8dp"
+                card_view:layout_constraintRight_toRightOf="parent"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" />
+
+            <ImageView
+                android:id="@+id/ratingStar"
+                android:layout_width="22dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginRight="8dp"
+                android:scaleType="centerCrop"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:srcCompat="@android:drawable/star_off"
+                card_view:layout_constraintRight_toLeftOf="@+id/ratingFilmCard" />
 
         </android.support.constraint.ConstraintLayout>
 

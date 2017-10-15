@@ -71,6 +71,7 @@ public class FilmList extends Activity {
                 film.setYear(arrayFilms.getJSONObject(i).getString("release_date"));
                 film.setRating(arrayFilms.getJSONObject(i).getString("vote_average"));
                 film.setLinkCartaz("http://image.tmdb.org/t/p/w185" + arrayFilms.getJSONObject(i).getString("poster_path"));
+                film.setOverview(arrayFilms.getJSONObject(i).getString("overview"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

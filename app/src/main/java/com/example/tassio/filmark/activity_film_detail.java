@@ -11,6 +11,8 @@ import android.util.Log;
 import android.widget.*;
 import android.view.*;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -52,38 +54,32 @@ public class activity_film_detail extends AppCompatActivity implements Serializa
         plotTextInfo = (TextView) findViewById(R.id.plotTextInfo);
         filmImageView = (ImageView) findViewById(R.id.imageView);
 
-        String stringUrl = new String();
+        String stringUrl;
 
         try { // Tentativa de busca das informações passadas entre telas do JSONObject baixado
-            JSONObject json = new JSONObject(getIntent().getStringExtra("json"));
-            // Veiculação das informações passadas entre telas para os campos da activity_film_detail
-            filmeTextInfo.setText(json.getString("name"));
-            notaTextInfo.setText(json.getString("rating"));
-            anoTextInfo.setText(json.getString("year"));
-            generoTextInfo.setText(json.getString("genre"));
-            estrelasTextInfo.setText(json.getString("stars"));
-            plotTextInfo.setText(json.getString("plot"));
-            stringUrl = json.getString("poster_url");
-            collapsingToolbarLayout.setTitle(json.getString("name"));
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            Intent it = getIntent();
 
-        try {
+            Film filmDetail = (Film) it.getSerializableExtra("jsonFilm");
+
+            filmDetail.getTitle();
+
+            filmeTextInfo.setText(filmDetail.getTitle());
+            notaTextInfo.setText(filmDetail.getRating());
+            anoTextInfo.setText(filmDetail.getYear().substring(0, 4));
+            //generoTextInfo.setText(json.getString("genre"));
+            //estrelasTextInfo.setText(json.getString("stars"));
+            plotTextInfo.setText(filmDetail.getOverview());
+            stringUrl = filmDetail.getLinkCartaz();
+            collapsingToolbarLayout.setTitle(filmDetail.getTitle());
+
             // Veiculação e download da imagem URL do cataz do filme com a ImageView dos detalhes do filme pesquisado
-            URL url = new URL(stringUrl);
-            new DownloadImageTask((ImageView) filmImageView).execute(stringUrl);
+            Picasso.with(getApplicationContext()).load(stringUrl).into(filmImageView);
 
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-
-
-
-
-
 
 }

@@ -35,13 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
     private Button btSearch;
     private EditText fieldSearch;
-    private String url = "http://theapache64.xyz:8080/movie_db/search?keyword=";
-    private JSONObject object = new JSONObject();
-
     private HTTPConnection httpConnection = new HTTPConnection();
-
-    List<Film> filmArray = new ArrayList<>();
-
     JSONArray cast;
 
     /*
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     OBS2: Foi encontrado uma API que será utilizada no lugar dessa genérica, nessa API é necessário
     o uso de chaves e token de autenticação, e será possível listar os filmes antes de abrir os
     detalhes do selecionado.
-     */
+    */
 
     @Override // Método a ser executado no início da aplicação
     protected void onCreate(Bundle savedInstanceState) {

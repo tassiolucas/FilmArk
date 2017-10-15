@@ -33,6 +33,10 @@
         <item name="android:textColor">#075771</item>
     </style>
 
+    <style name="RatingStarColor">
+        <item name="android:colorBackground">#18a3d1</item>
+    </style>
+
     <style name="right_column_normal" parent="TextAppearance.AppCompat.Subhead">
         <item name="android:layout_width">0dp</item>
         <item name="android:textColor">#18a3d1</item>

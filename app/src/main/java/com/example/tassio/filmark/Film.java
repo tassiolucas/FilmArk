@@ -10,19 +10,21 @@ import java.util.List;
 
 public class Film implements Serializable {
 
-    String title;
-    String year;
-    String rating;
-    String linkCartaz;
+    private String title;
+    private String year;
+    private String rating;
+    private String linkCartaz;
+    private String overview;
 
     public Film(){
     }
 
-    Film(String titulo, String ano, String rating, String linkCartaz) {
+    Film(String titulo, String ano, String rating, String linkCartaz, String overview) {
         this.title = titulo;
         this.year = ano;
         this.rating = rating;
         this.linkCartaz = linkCartaz;
+        this.overview = overview;
     }
 
     public String getTitle() {
@@ -55,6 +57,14 @@ public class Film implements Serializable {
 
     public void setLinkCartaz(String linkCartaz){
         this.linkCartaz = linkCartaz;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getOverview(){
+        return overview;
     }
 
 }
