@@ -28,7 +28,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
     // Definição das variáveis do Main Activity
@@ -64,15 +63,10 @@ public class MainActivity extends AppCompatActivity {
         btSearch.setOnClickListener(new View.OnClickListener() {
             // Método a ser executado ao apertar o botão de procura
             public void onClick(View v){
-
                 httpConnection.sendSearchMovie(getApplicationContext(), fieldSearch.getText().toString(), new SearchCallBack() {
                     @Override
                     public void onAnswer(JSONObject result) {
                         try {
-                            System.out.println("Array page: " + result.getString("page"));
-                            System.out.println("Array total_results: " + result.getString("total_results"));
-                            System.out.println("Array total_pages: " + result.getString("total_pages"));
-
                             cast = result.getJSONArray("results");
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -86,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Método de passagem de informaões do filme para próxima tela + Passagem para proxima tela
     private void moveAct() {
-
         Intent it = new Intent(MainActivity.this, FilmList.class);
 
         it.putExtra("jsonArray", cast.toString());

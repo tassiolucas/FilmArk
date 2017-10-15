@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class FilmList extends Activity {
 
     List<Film> filmList;
@@ -34,7 +33,6 @@ public class FilmList extends Activity {
         setContentView(R.layout.activity_film_list);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerFilm_content);
-
 
         Intent it = getIntent();
         String jsonString = it.getStringExtra("jsonArray");
@@ -57,7 +55,6 @@ public class FilmList extends Activity {
         recyclerView.setAdapter(adapter);
 
         prepareFilms(arrayFilms);
-
     }
 
     private void prepareFilms(JSONArray arrayFilms) {
@@ -75,21 +72,7 @@ public class FilmList extends Activity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             filmList.add(film);
-
         }
-
-//        Film a = new Film("Titanic", "1991", "9.5", "BLABLA");
-//        filmList.add(a);
-//
-//        Film b = new Film("Games of Thones", "2017", "10", "BLABLA");
-//        filmList.add(b);
-
     }
-
-
-
-
-
 }

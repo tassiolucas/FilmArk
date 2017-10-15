@@ -15,6 +15,11 @@ public class Film implements Serializable {
     private String rating;
     private String linkCartaz;
     private String overview;
+    private int genresId;
+    private String genres;
+    private String diretor;
+    private String estrelas;
+
 
     public Film(){
     }
@@ -66,5 +71,7 @@ public class Film implements Serializable {
     public String getOverview(){
         return overview;
     }
+
+
 
 }

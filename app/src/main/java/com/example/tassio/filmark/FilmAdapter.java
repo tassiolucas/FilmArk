@@ -20,10 +20,6 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-/**
- * Created by tassi on 13/10/2017.
- */
-
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
     private Context context;
@@ -55,7 +51,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
 
         @Override
         public void onClick(View v) {
-
             int position = getLayoutPosition();
 
             Intent it = new Intent(v.getContext(), activity_film_detail.class);

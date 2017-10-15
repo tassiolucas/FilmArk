@@ -12,21 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity_film_detail"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".FilmList"></activity>
+
+        <activity
+            android:name=".FilmList"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

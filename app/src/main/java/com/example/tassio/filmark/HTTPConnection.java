@@ -18,16 +18,10 @@ import org.json.JSONObject;
 public class HTTPConnection extends Application {
 
     //Declaração das variáveis
-    private JSONObject objectJson = new JSONObject();
-
-    private JSONObject objectResposta = new JSONObject();
-
     private static final String TAG = HTTPConnection.class.getName();
-
     private String keyApi = "5c03f6eb91d5afc669745ebc92817eab";
     private String enderecoApi = "https://api.themoviedb.org/3/";
-    private String tokenApi;
-
+    private String enderecoApiAlternativo = "http://theapache64.xyz:8080/movie_db/search?keyword=";
 
     public void sendSearchMovie(final Context context, String entradaSearch, final MainActivity.SearchCallBack callBack) {
 
@@ -44,25 +38,23 @@ public class HTTPConnection extends Application {
 
     }
 
-    /*
-    // Não dependente para procura de filmes
-    public void sendRequestToken(final Context context) throws JSONException {
-        String endAutentication = "authentication/token/new?api_key=" + keyApi;
+    public void sendSearchDetailsMovie(final Context context, String entradaSearch, final activity_film_detail.SearchCallBack callBack) {
+        String input = entradaSearch;
 
-        request(endAutentication, context, new ServerCallBack() {
+        input = input.replace(" ", "%20");
+
+        String endPointSearch = enderecoApiAlternativo + input;
+
+        request(endPointSearch, context, new ServerCallBack() {
             @Override
             public void onSuccess(JSONObject result) {
-                try {
-                    tokenApi = result.getString("request_token").toString();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                callBack.onAnswer(result);
             }
         });
-    }
-    */
 
-    public void request(String endPoint, Context context, final ServerCallBack callBack) {
+    }
+
+    private void request(String endPoint, Context context, final ServerCallBack callBack) {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, endPoint, null, new Response.Listener<JSONObject>() {
 

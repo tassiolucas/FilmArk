@@ -53,6 +53,7 @@
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <GridLayout
+            android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:columnCount="2"
@@ -183,7 +184,7 @@
                 android:layout_column="1"
                 android:layout_row="6"
                 android:text="@string/example_full_plot"
-                android:textAlignment="textStart" />
+                />
 
         </GridLayout>
     </android.support.v4.widget.NestedScrollView>

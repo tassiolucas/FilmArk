@@ -8,23 +8,23 @@
     <string name="snackbar_title_empty">Please enter a movie title</string>
     <string name="network_not_available">Network not available! Please connect to the Internet.</string>
     <string name="title">Filme</string>
-    <string name="example_title">Wreck-It Ralph</string>
+    <string name="example_title">...</string>
     <string name="released">Ano</string>
-    <string name="example_release">02 Nov 2012</string>
+    <string name="example_release">...</string>
     <string name="runtime">Runtime</string>
-    <string name="example_runtime">101 min</string>
+    <string name="example_runtime">...</string>
     <string name="director">Diretor</string>
-    <string name="example_director">Rich Moore</string>
+    <string name="example_director">...</string>
     <string name="Genre">Gênero</string>
-    <string name="example_genre">Animation, Adventure, Comedy</string>
+    <string name="example_genre">...</string>
     <string name="Writer">Writer(s)</string>
-    <string name="example_writer">Rich Moore (story), Phil Johnston (story), Jim Reardon (story), Phil Johnston (screenplay), Jennifer Lee (screenplay), John C. Reilly (additional story material)</string>
+    <string name="example_writer">...</string>
     <string name="stars">Estrelas</string>
-    <string name="example_stars">John C. Reilly, Sarah Silverman, Jack McBrayer, Jane Lynch</string>
+    <string name="example_stars">...</string>
     <string name="rating">Nota</string>
-    <string name="example_rating">6.9</string>
+    <string name="example_rating">...</string>
     <string name="plot">Sinopse</string>
-    <string name="example_full_plot">"Wreck-It Ralph longs to be as beloved as his game's perfect Good Guy, Fix-It Felix. Problem is, nobody loves a Bad Guy. But they do love heroes... so when a modern, first-person shooter game arrives featuring tough-as-nails Sergeant Calhoun, Ralph sees it as his ticket to heroism and happiness. He sneaks into the game with a simple plan -- win a medal -- but soon wrecks everything, and accidentally unleashes a deadly enemy that threatens every game in the arcade. Ralph's only hope?"</string>
+    <string name="example_full_plot">...</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
