@@ -1,5 +1,5 @@
 ﻿# FilmArk
-Projeto Aplicativo de Filmes da ArkMeds
+Projeto Aplicativo de Filmes da Arkmeds
 
 [Done] 1ª Fase: Criação do aplicativo com API de Servidor Gratuito: http://theapache64.xyz:8080/movie_db/search?keyword=
             Com busca de títulos e exibição dos detalhes do filme, sem listagem (devido restrições da API)
